@@ -47,15 +47,12 @@ public class Servidor extends UnicastRemoteObject implements ServidorIF {
             }
         }
     }
-    
-        
-    //cette fonction pour ajouter un client connectes a la liste des clients sur le serveur
+
     @Override
     public synchronized void addCliente(ClienteIF client) throws RemoteException {
         this.clients.add(client);
     }
     
-    //cette fonction pour recupere le nom des clients connectes
     @Override
     public synchronized Vector<String> getListClienteName(String name) throws RemoteException {
         Vector<String> list = new Vector<>();
@@ -67,7 +64,7 @@ public class Servidor extends UnicastRemoteObject implements ServidorIF {
         return list;
     }
     
-    //cette fonction pour supprimer totalement une liste des clients de chat (kick-out)
+   
     @Override
     public synchronized void removeClient(List<String> clients){
         for(int j=0;j<this.clients.size();j++){
@@ -83,8 +80,6 @@ public class Servidor extends UnicastRemoteObject implements ServidorIF {
             }
         }
     }
-    
-    //cette fonction pour supprimer totalement un seul client de chat (kick-out)
     @Override
     public synchronized void removeClient(String clients){
         for(int j=0;j<this.clients.size();j++){
@@ -98,8 +93,6 @@ public class Servidor extends UnicastRemoteObject implements ServidorIF {
         }
     }
 
-   
-    //cette fonction pour verfifier est que un username existe deja dans le serveur ou non, car username est l'identificateur sur chat
     @Override
     public boolean checkNombreusuario(String username) throws RemoteException {
         boolean exist = false;

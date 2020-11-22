@@ -114,7 +114,7 @@ public class LoginView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    //l'action lorsque un client va entrer au chat, premierement en verifié est ce que username existe deja !!
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             if(!server.checkNombreusuario(jTextField1.getText())){
@@ -135,7 +135,7 @@ public class LoginView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    //fonction main
+  
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

@@ -34,14 +34,14 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
     private String name;
     private GroupLayout groupLayout;
     
-    //constructeur
+    
     public ChatView(String name,String autorization,ServidorIF server) {
         initComponents();
         
         this.server = server;
         this.name = name;
         
-        //detecter le group de client: simple user ou admin pour bourser a l'admin les permission (activer,block,supprimer) clients
+        
         if(autorization.equals("Administrator")){
             System.out.print(autorization);
             listConnect.setComponentPopupMenu(jPopupMenu1);
@@ -53,7 +53,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         
         
         
-        //questionneé le client avant de cloture chat, si oui on supprimer le dans la liste des client
+        
         this.addWindowListener(new java.awt.event.WindowAdapter() {    
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -93,7 +93,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         }
         });
         
-        //une liste qui contient le nom des clients connectes
+        
         listClients = new Vector<>();
         listConnect.setListData(listClients);
         
@@ -103,7 +103,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
             System.out.println("Error: " + ex.getMessage());
         }
         
-        //timer pour a chaque 20s va actualiser la liste des clients connectes 
+       
         Timer minuteur = new Timer();
         TimerTask tache = new TimerTask() {
             @Override
@@ -249,7 +249,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    //action sur la bouton "send" button d'envoi le message, verifier si le message est vide ou non avant l'envoyer
+   
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         if(!inputMsg.getText().equals("")){
             if(!inputMsg.getText().equals("Enter you Message ...")){
@@ -263,13 +263,13 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         }
     }//GEN-LAST:event_btnSendActionPerformed
 
-    //action sur la bouton "refresh" button d'actualisation de la liste des clients (utilisation de thread)
+  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Thread thread = new Thread(this);
         thread.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    //action sur le popup menu "supprimer clients"
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         try {
             server.removeClient(listConnect.getSelectedValuesList());
@@ -278,12 +278,12 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         } 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    //action sur le popup menu "blocker clients"
+    
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    //action sur le popup menu "activer clients"
+   
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -304,11 +304,11 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
     private javax.swing.JTextArea listMessage;
     // End of variables declaration//GEN-END:variables
 
-    //la fonction de thread pour le button "actualiser"
+   
     @Override
     public void run() {
         try {
-            //System.out.println(server.getListClientByName(nom+3).size());
+            
             model.clear();
             listClients = server.getListClienteName(name);
             int i=0;

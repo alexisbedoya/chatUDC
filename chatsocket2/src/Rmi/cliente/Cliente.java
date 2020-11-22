@@ -26,7 +26,7 @@ public class Cliente extends UnicastRemoteObject implements ClienteIF{
     private final JTextArea output;
   
     
-    //constructeur
+
     public Cliente(String name , ServidorIF server,JTextArea jtext1,JTextArea jtext2) throws RemoteException{
         this.name = name;
         this.server = server;
@@ -36,14 +36,14 @@ public class Cliente extends UnicastRemoteObject implements ClienteIF{
         server.addCliente(this);
     }
     
-    //cette fonction pour recupere les messages de la discuttions a partir de server
+  
    @Override
     public void retrieveMessage(String message) throws RemoteException {
         output.setText(output.getText() + "\n" + message);
     }
     
     
-    //cette fonction pour envoyer un message vers le serveur
+  
     public void enviarMensaje(List<String> list) {
         try {
             server.enviarMesaje(name + " : " + input.getText(),list);
@@ -52,13 +52,13 @@ public class Cliente extends UnicastRemoteObject implements ClienteIF{
         }
     }
     
-    //cette fonction pour recupere le nom d'un client connectées
+ 
     @Override
     public String getNombre() {
         return name;
     }
 
-    //cette fonction pour desactiver a un client la fonctionnalité d'envoyer un message
+    
     @Override
     public void cerrarChat(String message) throws RemoteException {
         input.setEditable(false);
@@ -66,7 +66,7 @@ public class Cliente extends UnicastRemoteObject implements ClienteIF{
         JOptionPane.showMessageDialog(new JFrame(),message,"Alert",JOptionPane.WARNING_MESSAGE); 
     }
 
-    //cette fonction pour activer a un client la fonctionnalité d'envoyer un message
+   
     @Override
     public void abrirChat() throws RemoteException {
         input.setEditable(true);
