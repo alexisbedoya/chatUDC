@@ -1,2 +1,0 @@
-client.UDPClient
-client.UDPClient$HeartbeatSender
