@@ -42,10 +42,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         this.name = name;
         
         
-        if(autorization.equals("Administrator")){
-            System.out.print(autorization);
-            listConnect.setComponentPopupMenu(jPopupMenu1);
-        }
+      
         
         this.setLocationRelativeTo(null);
         this.setTitle("Chat (" + name + ")");
@@ -58,7 +55,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 if (JOptionPane.showConfirmDialog(new JFrame(), 
-                    "Are you sure you want to close this chat ?", "Close chat?", 
+                    "Esta seguro que quieres salir ?", "Cerrar chat?", 
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
                     try {
@@ -75,11 +72,11 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
         
         //un placeholder sur le textfield d'envoyer message
         inputMsg.setForeground(Color.GRAY);
-        inputMsg.setText("Enter your Message ...");
+        inputMsg.setText("Ingrese su mensaje ...");
         inputMsg.addFocusListener(new FocusListener() {
         @Override
          public void focusGained(FocusEvent e) {
-            if (inputMsg.getText().equals("Enter your Message ...")) {
+            if (inputMsg.getText().equals("Ingrese su mensaje ...")) {
                 inputMsg.setText("");
                 inputMsg.setForeground(Color.BLACK);
             }
@@ -88,7 +85,7 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
          public void focusLost(FocusEvent e) {
             if (inputMsg.getText().isEmpty()) {
                 inputMsg.setForeground(Color.GRAY);
-                inputMsg.setText("Enter your Message ...");
+                inputMsg.setText("Ingrese su mensaje ...");
             }
         }
         });
@@ -252,14 +249,16 @@ public class ChatView extends javax.swing.JFrame implements Runnable{
    
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         if(!inputMsg.getText().equals("")){
-            if(!inputMsg.getText().equals("Enter you Message ...")){
+            if(!inputMsg.getText().equals("Ingrese su mensaje ...")){
                 client.enviarMensaje(listConnect.getSelectedValuesList());
+                listMessage.append("tu: "+inputMsg.getText());
                 inputMsg.setText("");
+                
             }else{
-            JOptionPane.showMessageDialog(this,"Please insert something to set your message","Alert",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Por favor ingrese algo en su mensaje","Alerta",JOptionPane.WARNING_MESSAGE);
         }
         }else{
-            JOptionPane.showMessageDialog(this,"Please insert something to send your message","Alert",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Por favor ingrese algo en su mensaje","Alerta",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSendActionPerformed
 
